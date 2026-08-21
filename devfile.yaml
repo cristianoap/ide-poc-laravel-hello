@@ -1,0 +1,22 @@
+schemaVersion: 2.2.0
+metadata:
+  name: laravel-hello
+components:
+  - name: tools
+    container:
+      memoryLimit: 2Gi
+      endpoints:
+        - name: dev
+          targetPort: 8000
+          exposure: public
+commands:
+  - id: install
+    exec:
+      component: tools
+      commandLine: "composer install --no-interaction --no-progress || true"
+      workingDir: ${PROJECT_SOURCE}
+  - id: start
+    exec:
+      component: tools
+      commandLine: "php -S 0.0.0.0:8000 -t ."
+      workingDir: ${PROJECT_SOURCE}
