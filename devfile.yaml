@@ -4,7 +4,6 @@ metadata:
 components:
   - name: tools
     container:
-      memoryLimit: 2Gi
       endpoints:
         - name: dev
           targetPort: 8000
